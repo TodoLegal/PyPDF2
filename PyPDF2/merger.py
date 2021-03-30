@@ -113,7 +113,7 @@ class PdfFileMerger(object):
         if isString(fileobj):
             fileobj = file(fileobj, 'rb')
             my_file = True
-        elif hasattr(fileobj, "seek") and hasattr(fileobj, "read"):
+        elif isinstance(fileobj, file):
             fileobj.seek(0)
             filecontent = fileobj.read()
             fileobj = StreamIO(filecontent)
